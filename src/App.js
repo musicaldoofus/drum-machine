@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import audioSrc from './audioSrc';
+import Pad from './Pad';
 import './App.css';
 
+//Todo:
+//handle audio src={null}
+//pre-load audio files to avoid latency?
+//consider loading audio locally instead
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	constructor() {
+		super();
+		this.state = {
+			activePad: null
+		};
+		this.handlePadEvent = this.handlePadEvent.bind(this);
+	}
+	
+	handlePadEvent(e) { //must be attached via key and mouse click to Pad
+		//set 'active' pad using setState
+	}
+	
+	render() {
+		const pads = audioSrc.map(s => <Pad {...s} onClick={this.handlePadEvent}/>);
+		return (
+			<div id="drum-machine">
+				{pads}
+				<div id="display" className="display">
+					{this.state.activePad ? audioSrc.filter(s => s.label === this.state.activePad)[0].srcDescription : null}
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
