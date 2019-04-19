@@ -11,7 +11,7 @@ class Pad extends Component {
 	}
 	
 	componentDidMount() {
-		this.audio = document.getElementById(this.props.keyCode);
+		this.audio = document.getElementById(this.props.label);
 		this.audio.addEventListener('ended', () => this.setState({isActive: false}));
 	}
 	
@@ -21,19 +21,17 @@ class Pad extends Component {
 		this.props.onClick(keyCode);
 		this.setState({isActive: true});
 	}
-		
+	
 	render() {
 		let {onClick, keyCode, srcDescription, showLabel, label, oggSrc, mp3Src, wavSrc} = this.props;
+		const src = oggSrc || mp3Src || wavSrc;
 		return (
 			<div onClick={() => this.handlePadClick(keyCode)} className={`drum-pad ${this.state.isActive ? 'active' : ''}`} id={srcDescription} alt={srcDescription}>
-				<audio className="clip" id={keyCode} preload="true" autoPlay={false}>
-					{oggSrc ? <source src={oggSrc} type="audio/ogg"/> : null}
-					{mp3Src ? <source src={mp3Src} type="audio/mpeg"/> : null}
-					{wavSrc ? <source src={wavSrc} type="audio/wav"/> : null}
+				<audio className="clip" id={label} preload="true" autoPlay={false} src={src}>
 					Your browser does not support the <code>audio</code> tag.
 				</audio>
-				<div className="pad-display">
-					{showLabel && label}
+				<div className={`pad-display ${!showLabel ? 'hidden' : ''}`}>
+					{label}
 				</div>
 			</div>
 		);

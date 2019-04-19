@@ -13,3 +13,9 @@
 .drum-pad.active {
 	background: radial-gradient(ellipse at center, #73A8E5 0%,#cdd2d6 0%,#cdd2d6 40%,#73A8E5 100%);
 }
+.pad-display {
+	font-family: Barlowe, sans-serif;
+}
+.pad-display.hidden {
+	opacity: 0;
+}
