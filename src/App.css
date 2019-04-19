@@ -1,14 +1,28 @@
+.drum-machine {
+	background-color: #2d3436;
+	border-radius: 2px;
+	width: 304px;
+}
 .display {
 	height: 40px;
-	width: 264px;
 	padding: 20px;
+	display: flex;
+}
+.display > div {
+	margin: auto;
+	background-color: #FFF;
+	width: 50%;
+	height: 50px;
+	text-align: center;
+}
+.display > div > p {
+	font-family: Barlow, sans-serif;
+	font-weight: 700;
 }
 .pad-wrapper {
 	display: grid;
 	grid-template-columns: 80px 80px 80px;
 	grid-template-rows: 80px 80px 80px;
 	grid-gap: 12px;
-	height: 264px;
-	width: 264px;
 	padding: 20px;
 }

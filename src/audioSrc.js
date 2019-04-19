@@ -3,7 +3,7 @@ const audioSrc = [
 		oggSrc: '',
 		mp3Src: '',
 		wavSrc: './audio/CYCdh_ElecK01-Kick01.wav',
-		srcDescription: 'kick-1',
+		srcDescription: 'Kick-1',
 		label: 'Q',
 		keyCode: 81
 	},
@@ -11,7 +11,7 @@ const audioSrc = [
 		oggSrc: '',
 		mp3Src: '',
 		wavSrc: './audio/CYCdh_ElecK01-Kick02.wav',
-		srcDescription: 'kick-2',
+		srcDescription: 'Kick-2',
 		label: 'W',
 		keyCode: 87
 	},
@@ -19,7 +19,7 @@ const audioSrc = [
 		oggSrc: '',
 		mp3Src: '',
 		wavSrc: './audio/CYCdh_ElecK01-Snr01.wav',
-		srcDescription: 'snare',
+		srcDescription: 'Snare',
 		label: 'E',
 		keyCode: 69
 	},

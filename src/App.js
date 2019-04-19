@@ -20,11 +20,9 @@ class App extends Component {
 	}
 	
 	handlePadKeyCodePress(keyCode) {
-		const audio = document.getElementById(keyCode);
-		if (!audio) return;
-		audio.currentTime = 0;
-		audio.play();
-		this.handlePadClick(keyCode);
+		const audioKeyCode = audioSrc.filter(s => s.keyCode === keyCode);
+		if (audioKeyCode.length === 0) return;
+		document.getElementById(audioKeyCode[0].srcDescription).click();
 	}
 	
 	handlePadClick(keyCode) {
@@ -32,11 +30,20 @@ class App extends Component {
 	}
 	
 	render() {
-		const pads = audioSrc.map(s => <Pad key={s.label} onClick={this.handlePadClick} {...s}/>);
+		const pads = audioSrc.map(s => (
+			<Pad
+				key={s.label}
+				onClick={this.handlePadClick}
+				{...s}
+			/>
+		
+		));
 		return (
-			<div id="drum-machine">
+			<div id="drum-machine" className="drum-machine">
 				<div id="display" className="display">
-					{this.state.activePad ? audioSrc.filter(s => s.keyCode === this.state.activePad)[0].srcDescription : null}
+					<div>
+						<p>{this.state.activePad ? audioSrc.filter(s => s.keyCode === this.state.activePad)[0].srcDescription : null}</p>
+					</div>
 				</div>
 				<div className="pad-wrapper">
 					{pads}
