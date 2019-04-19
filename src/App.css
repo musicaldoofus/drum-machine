@@ -1,0 +1,14 @@
+.display {
+	height: 40px;
+	width: 264px;
+	padding: 20px;
+}
+.pad-wrapper {
+	display: grid;
+	grid-template-columns: 80px 80px 80px;
+	grid-template-rows: 80px 80px 80px;
+	grid-gap: 12px;
+	height: 264px;
+	width: 264px;
+	padding: 20px;
+}

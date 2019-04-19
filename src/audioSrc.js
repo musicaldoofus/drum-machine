@@ -1,50 +1,75 @@
-, W, E, A, S, D, Z, X, C
-
 const audioSrc = [
 	{
-		src: '',
-		srcDescription: '',
-		label: 'Q'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK01-Kick01.wav',
+		srcDescription: 'kick-1',
+		label: 'Q',
+		keyCode: 81
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'W'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK01-Kick02.wav',
+		srcDescription: 'kick-2',
+		label: 'W',
+		keyCode: 87
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'E'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK01-Snr01.wav',
+		srcDescription: 'snare',
+		label: 'E',
+		keyCode: 69
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'A'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_Kurz08-Perc07.wav',
+		srcDescription: 'Electric-tap',
+		label: 'A',
+		keyCode: 65
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'S'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK01-Snr02.wav',
+		srcDescription: 'Snare-2',
+		label: 'S',
+		keyCode: 83
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'D'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK02-Clap01.wav',
+		srcDescription: 'Clap',
+		label: 'D',
+		keyCode: 68
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'Z'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK03-Tom01.wav',
+		srcDescription: 'Tom-1',
+		label: 'Z',
+		keyCode: 90
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'X'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK03-Tom03.wav',
+		srcDescription: 'Tom-2',
+		label: 'X',
+		keyCode: 88
 	},
 	{
-		src: '',
-		srcDescription: '',
-		label: 'C'
+		oggSrc: '',
+		mp3Src: '',
+		wavSrc: './audio/CYCdh_ElecK03-Tom05.wav',
+		srcDescription: 'Tom-3',
+		label: 'C',
+		keyCode: 67
 	}
 ];
 

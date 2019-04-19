@@ -3,31 +3,43 @@ import audioSrc from './audioSrc';
 import Pad from './Pad';
 import './App.css';
 
-//Todo:
-//handle audio src={null}
-//pre-load audio files to avoid latency?
-//consider loading audio locally instead
-
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			activePad: null
 		};
-		this.handlePadEvent = this.handlePadEvent.bind(this);
+		this.handlePadClick = this.handlePadClick.bind(this);
 	}
 	
-	handlePadEvent(e) { //must be attached via key and mouse click to Pad
-		//set 'active' pad using setState
+	componentDidMount() {
+		window.addEventListener('keydown', (e) => {
+			if (e.isComposing || e.keyCode === 229) return; //from MDN docs (avoid event during composition)
+			this.handlePadKeyCodePress(e.keyCode);
+		});
+	}
+	
+	handlePadKeyCodePress(keyCode) {
+		const audio = document.getElementById(keyCode);
+		if (!audio) return;
+		audio.currentTime = 0;
+		audio.play();
+		this.handlePadClick(keyCode);
+	}
+	
+	handlePadClick(keyCode) {
+		this.setState({activePad: keyCode});
 	}
 	
 	render() {
-		const pads = audioSrc.map(s => <Pad {...s} onClick={this.handlePadEvent}/>);
+		const pads = audioSrc.map(s => <Pad key={s.label} onClick={this.handlePadClick} {...s}/>);
 		return (
 			<div id="drum-machine">
-				{pads}
 				<div id="display" className="display">
-					{this.state.activePad ? audioSrc.filter(s => s.label === this.state.activePad)[0].srcDescription : null}
+					{this.state.activePad ? audioSrc.filter(s => s.keyCode === this.state.activePad)[0].srcDescription : null}
+				</div>
+				<div className="pad-wrapper">
+					{pads}
 				</div>
 			</div>
 		);
