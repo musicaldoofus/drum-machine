@@ -26,3 +26,35 @@
 	grid-gap: 12px;
 	padding: 20px;
 }
+.queue-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 20px;
+}
+button {
+	padding: 12px 20px;
+	border: none;
+	border-radius: 2px;
+	background-color: #1e5799;
+	color: #fff;
+	font-family: inherit;
+	font-size: 1.2rem;
+}
+button:hover {
+	cursor: pointer;
+	background-color: #73A8E5;
+}
+.tempo-wrapper {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-row: auto auto;
+}
+.tempo-wrapper > button {
+	padding: 0px;
+	grid-column-start: 1;
+}
+.tempo-wrapper > p {
+	grid-column: 2 / 2;
+	grid-row: 1 / 3;
+}
