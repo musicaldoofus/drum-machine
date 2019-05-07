@@ -10,53 +10,50 @@ class App extends Component {
 		super();
 		this.state = {
 			activePad: null,
-			playQueue: [],
+			playQueue: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+			queueFocus: null,
 			playing: false,
+			queueRepeat: false,
 			activeQueueIndex: 0,
 			tempo: 120 //BPM
 		};
-		this.sounds = audioSrc.map(s => new Howl({src: [s.wavSrc]}));
+		const soundKeys = audioSrc.map(s => ''.concat(s.keyCode));
+		this.sounds = {};
+		soundKeys.forEach((k, i) => this.sounds[k] = new Howl({src: [audioSrc[i].wavSrc]}));
 		this.handlePadClick = this.handlePadClick.bind(this);
-		this.handleAddSound = this.handleAddSound.bind(this);
 		this.handlePlayQueue = this.handlePlayQueue.bind(this);
 		this.handleUpdateTempo = this.handleUpdateTempo.bind(this);
+		this.handleQueueRepeat = this.handleQueueRepeat.bind(this);
 	}
 	
 	componentDidMount() {
 		window.addEventListener('keydown', (e) => {
 			if (e.isComposing || e.keyCode === 229) return; //from MDN docs (avoid event during composition)
-			this.handlePadKeyCodePress(e.keyCode);
+			this.handlePadClick(e.keyCode);
 		});
 	}
 	
 	playSound(keyCode) {
-		let ind = 0;
-		for (let i = 0; i < this.sounds.length; i++) {
-			if (audioSrc[i].keyCode === keyCode) ind = i;
-		}
-		this.sounds[ind].play();
-	}
-	
-	handlePadKeyCodePress(keyCode) {
-		this.playSound(keyCode);
-	}
-	
-	OLD_handlePadKeyCodePress(keyCode) {
-		const audioKeyCode = audioSrc.filter(s => s.keyCode === keyCode);
-		if (audioKeyCode.length === 0) return;
-		document.getElementById(audioKeyCode[0].srcDescription).click();
+		if (this.sounds.hasOwnProperty(keyCode)) this.sounds[keyCode].play();
 	}
 	
 	handlePadClick(keyCode) {
-		this.setState({activePad: keyCode});
-		!this.state.playing ? this.handleAddSound(keyCode) : console.log('playing');
+		this.playSound(keyCode);
+		if (this.state.queueFocus || this.state.queueFocus === 0) {
+			this.addToQueue(keyCode);
+		}
 	}
 	
-	handleAddSound(keyCode) {
-		if (this.state.playQueue.length >= 8) return;
-		const currQueue = this.state.playQueue.slice();
-		const playQueue = currQueue.concat(keyCode);
-		this.setState({playQueue});
+	handleQueuePadClick(ind) {
+		this.setState({queueFocus: ind}, () => console.log(ind));
+	}
+	
+	addToQueue(keyCode) {
+		const currQueue = JSON.parse(JSON.stringify(this.state.playQueue));
+		const updatedBeat = currQueue[this.state.queueFocus].concat(keyCode);
+		let updatedQueue = currQueue;
+		updatedQueue[this.state.queueFocus] = updatedBeat;
+		this.setState({playQueue: updatedQueue, queueFocus: null}, () => console.log('updated queue', this.state.playQueue));
 	}
 	
 	handlePlayQueue() {
@@ -64,21 +61,34 @@ class App extends Component {
 		const tempoMilliseconds = (1/(this.state.tempo/60)) * 1000; //convert from BPM to milliseconds
 		const that = this;
 		const playFromQueue = () => {
-			this.playSound(this.state.playQueue[this.state.activeQueueIndex]);
+			this.playSoundsAtInd(this.state.activeQueueIndex);
 			if (this.state.activeQueueIndex < (this.state.playQueue.length - 1)) {
 				that.setState({activeQueueIndex: that.state.activeQueueIndex + 1});
 			}
 			else {
-				window.clearInterval(queueSounds);
-				this.setState({playing: false, activeQueueIndex: 0});
+				if (this.state.queueRepeat) {
+					this.setState({activeQueueIndex: 0});
+				}
+				else {
+					window.clearInterval(queueSounds);
+					this.setState({playing: false, activeQueueIndex: 0});
+				}
 			}
 		};
 		const queueSounds = window.setInterval(playFromQueue, tempoMilliseconds);
 	}
 	
+	playSoundsAtInd(ind) {
+		this.state.playQueue[ind].forEach(s => this.playSound(s));
+	}
+	
 	handleUpdateTempo(a) {
 		const tempo = this.state.tempo + a;
 		this.setState({tempo});
+	}
+	
+	handleQueueRepeat() {
+		this.setState({queueRepeat: !this.state.queueRepeat});
 	}
 	
 	render() {
@@ -89,7 +99,8 @@ class App extends Component {
 				{...s}
 			/>
 		));
-		const queue = this.state.playQueue.map((k, i) => <QueuePad key={i} keyCode={k}/>);
+		const queuePads = this.state.playQueue
+			.map((sArr, ind) => <QueuePad key={ind} onClick={() => this.handleQueuePadClick(ind)} isActive={sArr.length > 0}/>);
 		return (
 			<div className="app-wrapper">
 				<div id="drum-machine" className="drum-machine">
@@ -107,9 +118,12 @@ class App extends Component {
 						{pads}
 					</div>
 				</div>
-				<div className="queue-wrapper">
+				<div className="queue-btn-wrapper">
 					<button onClick={this.handlePlayQueue}>Play</button>
-					{queue}
+					<button onClick={this.handleQueueRepeat}>Repeat</button>
+				</div>
+				<div className="queue-wrapper">
+					{queuePads}
 				</div>
 			</div>
 		);

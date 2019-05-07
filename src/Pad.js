@@ -11,14 +11,13 @@ class Pad extends Component {
 	}
 	
 	componentDidMount() {
-		this.audio = document.getElementById(this.props.label);
+		this.audio = document.getElementById(this.props.label); //improve
 		this.audio.addEventListener('ended', () => this.setState({isActive: false}));
 	}
 	
 	handlePadClick(keyCode) {
-		this.audio.currentTime = 0;
-		this.audio.play();
 		this.props.onClick(keyCode);
+		this.audio.currentTime = 0;
 		this.setState({isActive: true});
 	}
 	

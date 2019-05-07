@@ -27,10 +27,9 @@
 	padding: 20px;
 }
 .queue-wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(4, 88px);
+	grid-template-rows: repeat(4, 88px);
 }
 button {
 	padding: 12px 20px;
