@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Howler from 'howler';
 import pianoWithHowl from '../helpers/audioSrc';
 import './PianoPad.css';
 

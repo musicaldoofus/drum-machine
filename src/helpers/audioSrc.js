@@ -1,4 +1,4 @@
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import fMp3 from './audio/f.mp3';
 // import fsharpMp3 from './audio/fsharp.mp3';
 // import gMp3 from './audio/g.mp3';
