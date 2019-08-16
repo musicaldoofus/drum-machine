@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { Howl } from 'howler';
-import audioSrc from './audioSrc';
-import Pad from './Pad';
-import QueuePad from './QueuePad';
+import React/*, { Component }*/ from 'react';
+import PianoPad from './PianoPad';
+// import { Howl } from 'howler';
+// import audioSrc from './audioSrc';
+// import Pad from './Pad';
+// import QueuePad from './QueuePad';
 import './App.css';
-
+/*
 class App extends Component {
 	constructor() {
 		super();
@@ -129,5 +130,12 @@ class App extends Component {
 		);
 	}
 }
+*/
+
+const App = () => (
+	<div className="app">
+		<PianoPad/>
+	</div>
+);
 
 export default App;
