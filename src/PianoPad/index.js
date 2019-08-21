@@ -17,40 +17,51 @@ const PianoKey = (props) => {
 class PianoPad extends Component {
 	constructor() {
 		super();
-		this.synth = new Tone.Synth().toMaster();
+		this.state = {
+			isPressed: []
+		};
+		this.synth = new Tone.PolySynth().toMaster();
+		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleKeyUp = this.handleKeyUp.bind(this);
+		this.play = this.play.bind(this);
+		this.release = this.release.bind(this);
 	}
 	
 	componentDidMount() {
-		window.addEventListener('keydown', (e) => {
-			console.log(e);
-			if (e.isComposing || e.keyCode === 229) return //per MDN
-			e.preventDefault();
-			const pianoKey = pianoKeys.filter(k => k.keyCode === e.keyCode)[0];
-			if (pianoKey !== undefined) this.synth.triggerAttackRelease(pianoKey.srcDescription, '16n');
-		});
+		window.addEventListener('keydown', this.handleKeyDown);
+		window.addEventListener('keyup', this.handleKeyUp);
 	}
 	
-	handleKeyDown(keyCode) {
-
+	handleKeyDown(e) {
+		if (e.isComposing || e.keyCode === 229) return //per MDN
+		e.preventDefault();
+		const pianoKey = pianoKeys.filter(k => k.keyCode === e.keyCode)[0];
+		if (pianoKey !== undefined && this.state.isPressed.indexOf(e.keyCode) === -1) this.play(pianoKey);
 	}
 	
-	handleKeyUp(keyCode) {
-
+	handleKeyUp(e) {
+		const pianoKey = pianoKeys.filter(k => k.keyCode === e.keyCode)[0];
+		if (pianoKey !== undefined) this.release(pianoKey);
 	}
 	
-	play(s) {
-
+	play(pianoKey) {
+		this.synth.triggerAttack(pianoKey.srcDescription);
+		this.setState({isPressed: this.state.isPressed.concat(pianoKey.keyCode)});
 	}
 	
-	stop(s) {
-
+	release(pianoKey) {
+		this.synth.triggerRelease(pianoKey.srcDescription);
+		this.setState({isPressed: this.state.isPressed.filter(keyCode => keyCode !== pianoKey.keyCode)});
 	}
 	
 	render() {
-		const keys = pianoKeys.map(s => (
+		const keys = pianoKeys.map(pianoKey => (
 			<PianoKey
-				key={s.label}
-				{...s}
+				key={pianoKey.label}
+				isPressed={this.state.isPressed.indexOf(pianoKey.keyCode) > -1}
+				isWhite={pianoKey.isWhite}
+				onMouseDown={() => this.play(pianoKey)}
+				onMouseUp={() => this.release(pianoKey)}
 			/>
 		));
 		return (
