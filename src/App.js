@@ -52,7 +52,7 @@ class App extends Component {
 				<Instructions/>
 				<footer role="contentinfo">
 					<div>
-						made with <a href="https://tonejs.github.io" target="_blank" rel="noopener noreferrer">Tone</a> and <a href="http://bouncejs.com" target="_blank" rel="noopener noreferrer">Bounce</a>
+						made with <a href="https://tonejs.github.io" target="_blank" rel="noopener noreferrer">Tone</a>, <a href="https://github.com/goldfire/howler.js/" target="_blank" rel="noopener noreferrer">Howler</a>, and <a href="http://bouncejs.com" target="_blank" rel="noopener noreferrer">Bounce</a>
 					</div>
 				</footer>
 			</div>
