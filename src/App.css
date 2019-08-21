@@ -26,6 +26,7 @@ div#root, .app {
 	padding: 1rem;
 	background-color: #2C2C2C;
 	color: #fff;
+	z-index: 2;
 }
 .logo {
 	display: flex;
@@ -66,8 +67,9 @@ button {
 	cursor: pointer;
 }
 
+
 /*media queries*/
-@media screen and (max-height: 640px) {
+@media screen and (max-height: 600px) {
 	.drum-machine {
 		grid-template-rows: 68px 256px;
 		grid-template-columns: 256px 352px 80px;

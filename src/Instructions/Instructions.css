@@ -1,0 +1,26 @@
+/*Instructions.css*/
+.ui-instructions {
+    z-index: 1;
+    position: absolute;
+    height: 256px;
+    display: flex;
+    cursor: pointer;
+	left: calc(50% - 256px);
+    transform: rotate(-2deg);
+	transition: all ease 0.4s;
+}
+.ui-instructions.drum {
+	top: calc(50% - 224px);
+}
+.ui-instructions.piano {
+	top: calc(50% + 80px);
+}
+.ui-instructions:hover {
+	
+}
+.ui-instructions.drum.active {
+	transform: translateX(-96px) rotate(-10deg);
+}
+.ui-instructions.piano.active {
+	transform: translateX(-176px) rotate(-10deg);
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DrumPad from './DrumPad';
 import Metronome from './Metronome';
 import PianoPad from './PianoPad';
-import logo from './media/img/drum-machine-avatar.png';
+import Instructions from './Instructions';
 import hookup from './media/img/hookup.png';
 import './App.css';
 
@@ -49,6 +49,7 @@ class App extends Component {
 						<img src={hookup} alt=""/>
 					</div>
 				</div>
+				<Instructions/>
 			</div>
 		);
 	}
