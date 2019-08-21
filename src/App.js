@@ -3,6 +3,7 @@ import DrumPad from './DrumPad';
 import Metronome from './Metronome';
 import PianoPad from './PianoPad';
 import logo from './media/img/drum-machine-avatar.png';
+import hookup from './media/img/hookup.png';
 import './App.css';
 
 class App extends Component {
@@ -30,21 +31,26 @@ class App extends Component {
 				<div className="drum-machine">
 					<div className="logo">
 						<div>
-							smoove
+							smooov
 						</div>
 						<div>
 							<img src={logo} alt="Drum machine by Burns"/>
 						</div>
 					</div>
-					<main role="main" id="drum-machine-container">
-						<DrumPad/>
-						<Metronome
-							currentTempo={this.state.currentTempo}
-							handleUpdateTempo={this.handleUpdateTempoBtn}
-							onChange={this.handleUpdateTempoInput}
-						/>
-						<PianoPad/>
-					</main>
+					<DrumPad
+						volume={this.state.volume}
+					/>
+					<Metronome
+						currentTempo={this.state.currentTempo}
+						handleUpdateTempo={this.handleUpdateTempoBtn}
+						onChange={this.handleUpdateTempoInput}
+					/>
+					<PianoPad
+						volume={this.state.volume}
+					/>
+					<div className="hookup">
+						<img src={hookup} alt=""/>
+					</div>
 				</div>
 			</div>
 		);

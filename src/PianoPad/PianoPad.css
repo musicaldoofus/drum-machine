@@ -2,25 +2,26 @@
 .piano-pad-container {
 	grid-column: 1 / 3;
 	display: grid;
-	grid-template-columns: 48px 1px 48px 1px 48px 1px 48px 48px 1px 48px 1px 48px;
+	grid-template-columns: auto 1px auto 1px auto 1px auto auto 1px auto 1px auto 1px;
+	width: inherit;
 }
 .piano-pad-key {
 	display: block;
-	border: 1px solid black;
+	border: 1px solid #1D1F1E;
 	border-radius: 2px;
 	position: relative;
 }
 .piano-pad-key.white {
-	width: 48px;
-    height: 260px;
-    background-color: white;
+	width: auto;
+    height: 96%;
+    background-color: #FEFEFE;
     z-index: 1;
 }
 .piano-pad-key.black {
 	width: 36px;
-	height: 200px;
+	height: 64%;
 	margin-left: -18px;
-	background-color: black;
+	background-color: #0C091D;
 	z-index: 2;
 }
 .piano-pad-key.pressed {

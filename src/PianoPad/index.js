@@ -41,7 +41,7 @@ class PianoPad extends Component {
 	
 	handleKeyUp(e) {
 		const pianoKey = pianoKeys.filter(k => k.keyCode === e.keyCode)[0];
-		if (pianoKey !== undefined) this.release(pianoKey);
+		if (pianoKey !== undefined) this.setState({isPressed: []});
 	}
 	
 	play(pianoKey) {
