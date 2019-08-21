@@ -4,6 +4,7 @@
     flex-direction: column;
     text-align: center;
 	font-family: 'Sanchez', serif;
+	grid-row: 2 / 3;
 }
 .metronome-btn {
     width: 64px;

@@ -33,9 +33,6 @@ class App extends Component {
 						<div>
 							smooov
 						</div>
-						<div>
-							<img src={logo} alt="Drum machine by Burns"/>
-						</div>
 					</div>
 					<DrumPad
 						volume={this.state.volume}

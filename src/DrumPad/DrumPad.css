@@ -1,5 +1,7 @@
 /*DrumPad.css*/
 .drum-pad-container {
+	grid-column: 1 / 1;
+	grid-row: 2 / 3;
     display: grid;
     grid-template-columns: repeat(3, 80px);
     grid-template-rows: repeat(3, 80px);
