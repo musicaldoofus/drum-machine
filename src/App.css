@@ -29,7 +29,7 @@ div#root, .app {
 	padding: 1rem;
 	background-color: #2C2C2C;
 	color: #fff;
-	z-index: 2;
+	z-index: 3;
 }
 .logo {
 	display: flex;
