@@ -14,6 +14,7 @@ div#root, .app {
 	flex-direction: column;
 	background: rgb(124,166,160);
 	background: radial-gradient(circle, rgba(124,166,160,1) 0%, rgba(58,89,85,1) 100%);
+	font-family: 'Sanchez', serif;
 }
 .drum-machine {
 	margin: auto;
@@ -37,7 +38,6 @@ div#root, .app {
 	justify-content: center;
 }
 .logo > div:first-child {
-	font-family: 'Sanchez', serif;
 	font-size: 3rem;
 }
 .logo > div:last-child > img {
@@ -68,10 +68,17 @@ button {
 	background-color: inherit;
 	cursor: pointer;
 }
-
+footer {
+	display: flex;
+	margin-bottom: 2rem;
+}
+footer > div {
+	margin: auto;
+	font-size: 18px;
+}
 
 /*media queries*/
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 700px) {
 	.drum-machine {
 		grid-template-rows: 68px 256px;
 		grid-template-columns: 256px 352px 80px;
