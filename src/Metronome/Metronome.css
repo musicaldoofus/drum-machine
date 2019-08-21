@@ -1,0 +1,18 @@
+/*Metronome.css*/
+.metronome {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+	font-family: 'Sanchez', serif;
+}
+.metronome-btn {
+    width: 64px;
+    display: flex;
+    margin: 0 auto;
+}
+.metronome-btn > img {
+	max-width: 100%;
+}
+.metronome-btn.down {
+	transform: rotate(180deg);
+}

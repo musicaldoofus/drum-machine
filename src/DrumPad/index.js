@@ -6,7 +6,7 @@ const Pad = (props) => {
 	return (
 		<div
 			onClick={props.onClick}
-			className={`drum-pad${props.isActive ? ' active' : ''}`}
+			className={`drum-pad ${props.btnColor}${props.isActive ? ' active' : ''}`}
 		></div>
 	);
 }
