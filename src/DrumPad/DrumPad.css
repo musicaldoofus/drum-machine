@@ -1,0 +1,10 @@
+/*DrumPad.css*/
+.drum-pad {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	border-radius: 4px;
+	cursor: pointer;
+	background: rgb(24,167,96);
+	background: radial-gradient(circle, rgba(24,167,96,1) 0%, rgba(20,86,75,1) 100%);
+}
