@@ -6,7 +6,7 @@ const Pad = (props) => {
 	return (
 		<div
 			onClick={props.onClick}
-			className={`drum-pad ${props.btnColor}${props.isActive ? ' active' : ''}`}
+			className={`drum-pad ${props.btnColor}${props.isActive ? ' pressed' : ''}`}
 		></div>
 	);
 }
@@ -48,6 +48,7 @@ class DrumPad extends Component {
 			<Pad
 				key={pad.keyCode}
 				onClick={() => this.playPad(pad)}
+				isActive={this.state.isPressed.indexOf(pad.keyCode) > -1}
 				{...pad}
 			/>
 		));

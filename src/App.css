@@ -12,6 +12,8 @@ div#root, .app {
 .app {
 	display: flex;
 	flex-direction: column;
+	background: rgb(124,166,160);
+	background: radial-gradient(circle, rgba(124,166,160,1) 0%, rgba(58,89,85,1) 100%);
 }
 .drum-machine {
 	margin: auto;

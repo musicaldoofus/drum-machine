@@ -8,6 +8,7 @@
 	left: calc(50% - 256px);
     transform: rotate(-2deg);
 	transition: all ease 0.4s;
+	box-shadow: 0 2px 6px -1px #7f8c8d;
 }
 .ui-instructions.drum {
 	top: calc(50% - 224px);
