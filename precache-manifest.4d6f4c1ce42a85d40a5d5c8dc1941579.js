@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/drum-machine/static/media/CYCdh_ElecK02-Clap01.81946c28.wav"
   },
   {
-    "revision": "9ce63c7d8cc19650aecf",
+    "revision": "37d9d443cabb444ae81c",
     "url": "/drum-machine/static/css/main.f5a724d0.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/drum-machine/static/media/CYCdh_ElecK01-Snr02.fb4c66b3.wav"
   },
   {
-    "revision": "9ce63c7d8cc19650aecf",
-    "url": "/drum-machine/static/js/main.71bdec82.chunk.js"
+    "revision": "37d9d443cabb444ae81c",
+    "url": "/drum-machine/static/js/main.677c7c0a.chunk.js"
   },
   {
     "revision": "38cfffee383880698bc7c8569914360d",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/drum-machine/static/media/ui-instructions-piano.9e30a6b5.png"
   },
   {
-    "revision": "385639a70e67d5000432b9f0f8e0baba",
+    "revision": "24e690151a4d070190f87f9fd397cd78",
     "url": "/drum-machine/index.html"
   }
 ];
